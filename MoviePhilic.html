@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>MoviePhilic</title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            margin: 0px;
+            box-sizing: border-box;
+        }
+        .conatiner1 {
+            background: linear-gradient(to bottom left, rgb(169, 164, 164), white, rgb(169, 164, 164));
+            margin: 0px;
+            padding: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            box-shadow: 0px 10px 20px rgb(121 119 119);
+        }
+        .conatiner1 .left-side {
+            margin: 5px 15px;
+        }
+        .conatiner1 .left-side img {
+            float: left;
+        }
+        .conatiner1 h2 {
+            display: inline-block;
+            margin: 20px 15px;
+            float: right;
+        }
+        .conatiner1 .middle {
+            display: flex;
+            flex-wrap: wrap;
+            /* justify-content: space-around; */
+            max-width: 800px;
+        }
+        .conatiner1 .middle button{
+            font-size: 16px;
+            margin: 20px 10px;
+            padding: 7px 20px;
+            background-color: transparent;
+            border-radius: 8px;
+            transition: all 0.5s;
+        }
+        .conatiner1 .middle button:hover {
+            font-size: 20px;
+            background-color: darkslategray;
+            color: white;
+            cursor: pointer;
+        }
+        .conatiner1 .middle .btn:focus {
+            font-size: 20px;
+            background-color: darkslategray;
+            color: white;
+        }
+        .conatiner1 .right-side {
+            border-left: 3px solid white;
+        }
+        .conatiner1 .right-side i {
+            font-size: 23px;
+            margin-left: 25px;
+        }
+        .conatiner1 .right-side input {
+            margin: 23px;
+            border: 0px;
+            font-size: 23px;
+            width: 240px;
+            color: black;
+            margin-left: 10px;
+            line-height: 1.5em;
+            background-color: rgb(169, 164, 164);
+            padding: 5px 7px;
+            border-radius: 5px;
+        }
+        ::-webkit-input-placeholder {
+            color: white
+        }
+        :focus::-webkit-input-placeholder {
+            opacity: 60%;
+        }
+        .container2 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .movie {
+            background-color: white;
+            background-position: center;
+            background-size: cover;
+            width: 253px;
+            height: 285px;
+            margin: 20px;
+            margin-top: 35px;
+            margin-bottom: 5px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+        .movie h3,h4,h5,h6 {
+            display: inline;
+            position: absolute;
+            left: 20px;
+            bottom: 20px;
+            font-family: cursive;
+            font-size: 24px;
+            font-weight: bolder;
+            line-height: 32px;
+            letter-spacing: 0em;
+            text-align: left;
+            color: white;
+            transition: all 0.5s;
+        }
+        .movie h4 {
+            bottom: -7px;
+            display: none;
+            transition: all 0.5s;
+        }
+        .movie h5{
+            font-size: 15px;
+            top: -20px;
+            left: 180px;
+            display: none;
+            transition: all 0.5s;
+        }
+        .movie h6 {
+            font-size: 15px;
+            top: -30px;
+            left: 20px;
+            display: none;
+            transition: all 0.5s;
+        }
+        .movie img {
+            width: 253px;
+            height: 285px;
+            opacity: 100%;
+            transition: all 0.5s;
+        }
+        .movie:hover img{
+            scale: 1.1;
+        }
+        .movie:hover h3{
+            bottom: 40px;
+        }
+        .movie:hover h4 {
+            display: inline;
+            animation: fadeIn 0.5s;
+        }
+        .movie:hover h5 {
+            display: inline;
+            animation: fadeIn 0.5s;
+        }
+        .movie:hover h6 {
+            display: inline;
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .for-hovering {
+            z-index: 0;
+            width: 253px;
+            height: 285px;
+            opacity: 0%;
+        }
+        .loadmore {
+            text-align: center;
+        }
+        .loadmore button {
+            margin: 35px auto;
+            font-size: 25px;
+            padding: 8px 45px;
+            border-radius: 25px;
+            transition: all 0.5s;
+        }
+        .loadmore button:hover {
+            background-color: darkslategray;
+            color: white;
+            font-size: 28px;
+        }
+        .container3 {
+            text-align: center;
+            background-image: linear-gradient(to top, #031d33, white);
+        }
+        .container3 .leftside {
+            display: inline-block;
+        }
+        .container3 .leftside img {
+            float: left;
+            margin: 10px auto;
+        }
+        .container3 .leftside h2 {
+            color: black;
+            display: inline-block;
+            margin: 30px 15px;
+            font-size: 28px;
+        }
+        .container3 h3 {
+            color: black;
+            display: inline-block;
+            font-size: 22px;
+        }
+        .to_top {
+            text-align: center;
+            display: inline-block;
+            width: 55px;
+            font-size: 50px;
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+        }
+        .to_top i {
+            color: aqua;
+            transition: all 0.5s;
+        }
+        
+    </style>
+</head>
+<body>
+    <header id="top">
+        <div class="conatiner1">
+            <div class="left-side">
+                <a href="./MoviePhilic.html"><img src="./logo2.jpg" alt="logo"></a>
+                <h2>MoviePhilic</h2>
+                <div class="clear" style="clear: both;"></div>
+            </div>
+            <div class="middle">
+                <button class="btn" onclick="filter_movie('horror')">Horror</button>
+                <button class="btn" onclick="filter_movie('thriller')">Thriller</button>
+                <button class="btn" onclick="filter_movie('crime')">Crime</button>
+                <button class="btn" onclick="filter_movie('comedy')">Comedy</button>
+                <button class="btn" onclick="filter_movie('action')">Action</button>
+                <button class="btn" onclick="filter_movie('family')">Family</button>
+                <button class="btn" onclick="filter_movie('free')">Free</button>
+                <!-- <button class="btn" onclick="filter_movie('fantasy')" data-filter="fantasy">Fantasy</button>
+                <button class="btn" onclick="filter_movie('sci fi')" data-filter="sci fi">Sci Fi</button>
+                <button class="btn" onclick="filter_movie('drama')" data-filter="drama">Drama</button> -->
+            </div>
+            <div class="right-side">
+                <i class="fa-solid fa-magnifying-glass fa-beat-fade"></i>
+                <input type="text" placeholder="Quick Search" id="search-item" onkeyup="search()">
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container2" id="movie-list">
+            <div class="movie">
+                <a href="https://www.themoviedb.org/movie/1020696-play-dead" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/h5bwT8fuE6VIaOslRezwDiL2DxK.jpg" alt="play dead"></a>
+                <div class="for-hovering"></div>
+                <h6></h6>
+                <h5>Horror</h5>
+                <h3>Play Dead</h3>
+                <a href="https://www.themoviedb.org/movie/1020696-play-dead/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie">
+                <a href="https://www.themoviedb.org/movie/640146-ant-man-and-the-wasp-quantumania" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/qnqGbB22YJ7dSs4o6M7exTpNxPz.jpg" alt="quantumania"></a>
+                <div class="for-hovering"></div>
+                <h6></h6>
+                <h5>Action, Sci fi</h5>
+                <h3>Quantumania</h3>
+                <a href="https://www.themoviedb.org/movie/640146-ant-man-and-the-wasp-quantumania/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie">
+                <a href="https://www.themoviedb.org/tv/71712-the-good-doctor" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/luhKkdD80qe62fwop6sdrXK9jUT.jpg" alt="the good doctor"></a>
+                <div class="for-hovering"></div>
+                <h6></h6>
+                <h5>Drama</h5>
+                <h3>The Good Doctor</h3>
+                <a href="https://www.themoviedb.org/tv/71712-the-good-doctor/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie">
+                <a href="https://www.themoviedb.org/movie/920125-untitled-white-men-can-t-jump-reboot" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/7MUQMSncjUSYeNx0ZAgFCxhlPhv.jpg" alt="white men can't jump"></a>
+                <div class="for-hovering"></div>
+                <h6></h6>
+                <h5>Comedy, Drama</h5>
+                <h3>White Men can't Jump</h3>
+                <a href="https://www.themoviedb.org/movie/920125-untitled-white-men-can-t-jump-reboot/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie">
+                <a href="https://www.themoviedb.org/movie/736790-chupa" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/ra3xm8KFAkwK0CdbPRkfYADJYTB.jpg" alt="chupa"></a>
+                <div class="for-hovering"></div>
+                <h6></h6>
+                <h5>Fantasy, Family</h5>
+                <h3>Chupa</h3>
+                <a href="https://www.themoviedb.org/movie/736790-chupa/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie">
+                <a href="https://www.themoviedb.org/movie/638974-murder-mystery-2" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/s1VzVhXlqsevi8zeCMG9A16nEUf.jpg" alt="murder mystery 2"></a>
+                <div class="for-hovering"></div>
+                <h6></h6>
+                <h5>Comedy, Crime</h5>
+                <h3>Murdre Mystery 2</h3>
+                <a href="https://www.themoviedb.org/movie/638974-murder-mystery-2/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie">
+                <a href="https://www.themoviedb.org/movie/10144-the-little-mermaid" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/plcZXvI310FkbwIptvd6rqk63LP.jpg" alt="little mermaid"></a>
+                <div class="for-hovering"></div>
+                <h6></h6>
+                <h5>Fantasy, Family</h5>
+                <h3>The Little Mermaid</h3>
+                <a href="https://www.themoviedb.org/movie/10144-the-little-mermaid/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie">
+                <a href="https://www.themoviedb.org/movie/552688-the-mother" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/vnRthEZz16Q9VWcP5homkHxyHoy.jpg" alt="the mother"></a>
+                <div class="for-hovering"></div>
+                <h6></h6>
+                <h5>Action, Thriller</h5>
+                <h3>The Mother</h3>
+                <a href="https://www.themoviedb.org/movie/552688-the-mother/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie">
+                <a href="https://www.themoviedb.org/movie/1121316-el-ultimo-vagon" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/8Tf7bBXpLQjgFI0a5KJ1eHrxHTw.jpg" alt="where the track ends"></a>
+                <div class="for-hovering"></div>
+                <h6></h6>
+                <h5>Comedy, Family</h5>
+                <h3>Where The Track Ends</h3>
+                <a href="https://www.themoviedb.org/movie/1121316-el-ultimo-vagon/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie">
+                <a href="https://www.themoviedb.org/movie/439079-the-nun" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/sFC1ElvoKGdHJIWRpNB3xWJ9lJA.jpg" alt="the nun"></a>
+                <div class="for-hovering"></div>
+                <h6>Free</h6>
+                <h5>Horror, Thriller</h5>
+                <h3>The Nun</h3>
+                <a href="https://www.themoviedb.org/movie/439079-the-nun/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie">
+                <a href="https://www.themoviedb.org/movie/875104" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/A7vhdyGrpPMKXsuFBZzxmave94F.jpg" alt="ip man"></a>
+                <div class="for-hovering"></div>
+                <h6>Free</h6>
+                <h5>Action, Drama</h5>
+                <h3>IP Man: The Awakening</h3>
+                <a href="https://www.themoviedb.org/movie/875104/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie">
+                <a href="https://www.themoviedb.org/movie/982620-maneater" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/pwf3DGuWB1AptvIzHhlGxDUNnQX.jpg" alt="maneater"></a>
+                <div class="for-hovering"></div>
+                <h6>Free</h6>
+                <h5>Horror, Thriller</h5>
+                <h3>Maneater</h3>
+                <a href="https://www.themoviedb.org/movie/982620-maneater/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie">
+                <a href="https://www.themoviedb.org/movie/436270-black-adam" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/pFlaoHTZeyNkG83vxsAJiGzfSsa.jpg" alt=""></a>
+                <div class="for-hovering"></div>
+                <h6></h6>
+                <h5>Action, Sci fi</h5>
+                <h3>Black Adam</h3>
+                <a href="https://www.themoviedb.org/movie/436270-black-adam/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie">
+                <a href="https://www.themoviedb.org/movie/505642-black-panther-wakanda-forever" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/sv1xJUazXeYqALzczSZ3O6nkH75.jpg" alt="wakanda forever"></a>
+                <div class="for-hovering"></div>
+                <h6></h6>
+                <h5>Action, Sci fi</h5>
+                <h3>Black Panther: Wakanda Forever</h3>
+                <a href="https://www.themoviedb.org/movie/505642-black-panther-wakanda-forever/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie">
+                <a href="https://www.themoviedb.org/movie/620705-crater" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/n8ZpMwYT02XjpQHpSxn1eJw5Zpz.jpg" alt="crater"></a>
+                <div class="for-hovering"></div>
+                <h6></h6>
+                <h5>Family, Sci fi</h5>
+                <h3>Crater</h3>
+                <a href="https://www.themoviedb.org/movie/620705-crater/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie">
+                <a href="https://www.themoviedb.org/tv/71728-young-sheldon" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/MpdROQ5XxQqOMKhJlLUf7PTxIC.jpg" alt="young sheldon"></a>
+                <div class="for-hovering"></div>
+                <h6></h6>
+                <h5>Comedy, Family</h5>
+                <h3>Young Sheldon</h3>
+                <a href="https://www.themoviedb.org/tv/71728-young-sheldon/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie">
+                <a href="https://www.themoviedb.org/movie/981324-island-of-the-dolls" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/c8FUbg4SnvMXZx4rlkuK7FB6266.jpg" alt="island of dolls"></a>
+                <div class="for-hovering"></div>
+                <h6>Free</h6>
+                <h5>Horror</h5>
+                <h3>Island of the Dolls</h3>
+                <a href="https://www.themoviedb.org/movie/981324-island-of-the-dolls/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie">
+                <a href="https://www.themoviedb.org/movie/502356-the-super-mario-bros-movie" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg" alt="super mario bros"></a>
+                <div class="for-hovering"></div>
+                <h6></h6>
+                <h5>Fantasy, Family, Comedy</h5>
+                <h3>The Super Mario Bros Movie</h3>
+                <a href="https://www.themoviedb.org/movie/502356-the-super-mario-bros-movie/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie">
+                <a href="https://www.themoviedb.org/movie/603692-john-wick-chapter-4" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/vZloFAK7NmvMGKE7VkF5UHaz0I.jpg" alt="john wick 4"></a>
+                <div class="for-hovering"></div>
+                <h6></h6>
+                <h5>Action, Thriller, Crime</h5>
+                <h3>John Wick: Chapter 4</h3>
+                <a href="https://www.themoviedb.org/movie/603692-john-wick-chapter-4/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie">
+                <a href="https://www.themoviedb.org/movie/630586-wrong-turn" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/4U1SBHmwHkNA0eHZ2n1CuiC1K1g.jpg" alt="wrong turn"></a>
+                <div class="for-hovering"></div>
+                <h6>Free</h6>
+                <h5>Horror, Thriller</h5>
+                <h3>Wrong Turn</h3>
+                <a href="https://www.themoviedb.org/movie/630586-wrong-turn/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie">
+                <a href="https://www.themoviedb.org/movie/634649-spider-man-no-way-home" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/uJYYizSuA9Y3DCs0qS4qWvHfZg4.jpg" alt="spiderman no way home"></a>
+                <div class="for-hovering"></div>
+                <h6></h6>
+                <h5>Action, Sci fi</h5>
+                <h3>Spider-Man: No Way Home</h3>
+                <a href="https://www.themoviedb.org/movie/634649-spider-man-no-way-home/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie">
+                <a href="https://www.themoviedb.org/movie/204082-homefront" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/v55tfjL3QGeabkXAMXPb4olwjL0.jpg" alt="hoemfront"></a>
+                <div class="for-hovering"></div>
+                <h6>Free</h6>
+                <h5>Action, Triller</h5>
+                <h3>Homefront</h3>
+                <a href="https://www.themoviedb.org/movie/204082-homefront/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie">
+                <a href="https://www.themoviedb.org/movie/396535" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/vNVFt6dtcqnI7hqa6LFBUibuFiw.jpg" alt="train to busan"></a>
+                <div class="for-hovering"></div>
+                <h6>Free</h6>
+                <h5>Horror, Thriler, Action</h5>
+                <h3>Train to Busan</h3>
+                <a href="https://www.themoviedb.org/movie/396535/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie">
+                <a href="https://www.themoviedb.org/movie/667538-transformers-rise-of-the-beasts" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/gPbM0MK8CP8A174rmUwGsADNYKD.jpg" alt="transformer rise of beast"></a>
+                <div class="for-hovering"></div>
+                <h6></h6>
+                <h5>Action, Sci fi</h5>
+                <h3>Transformer: Rise of the Beast</h3>
+                <a href="https://www.themoviedb.org/movie/667538-transformers-rise-of-the-beasts/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie">
+                <a href="https://www.themoviedb.org/movie/960081-surrogate" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/821PHm9tLaoVJFgGfUoIJQTX0nx.jpg" alt="surrogate"></a>
+                <div class="for-hovering"></div>
+                <h6>Free</h6>
+                <h5>Horror, Thriller</h5>
+                <h3>Surrogate</h3>
+                <a href="https://www.themoviedb.org/movie/960081-surrogate/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie">
+                <a href="" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg" alt="avatar 2"></a>
+                <div class="for-hovering"></div>
+                <h6></h6>
+                <h5>Sci fi, Action</h5>
+                <h3>Avatar: The Way of Water</h3>
+                <a href="/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie">
+                <a href="https://www.themoviedb.org/movie/101299-the-hunger-games-catching-fire" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/vrQHDXjVmbYzadOXQ0UaObunoy2.jpg" alt="humger games catching fire"></a>
+                <div class="for-hovering"></div>
+                <h6>Free</h6>
+                <h5>Action, Sci fi</h5>
+                <h3>The Hunger Games: Catching Fire</h3>
+                <a href="https://www.themoviedb.org/movie/101299-the-hunger-games-catching-fire/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie">
+                <a href="https://www.themoviedb.org/movie/131631-the-hunger-games-mockingjay-part-1" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/4FAA18ZIja70d1Tu5hr5cj2q1sB.jpg" alt="hunger games mockingjay 1"></a>
+                <div class="for-hovering"></div>
+                <h6>Free</h6>
+                <h5>Sci fi, Thriller</h5>
+                <h3>The Hunger Games: Mockingjay-Part 1</h3>
+                <a href="https://www.themoviedb.org/movie/131631-the-hunger-games-mockingjay-part-1/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie">
+                <a href="https://www.themoviedb.org/movie/385687-fast-x" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/1E5baAaEse26fej7uHcjOgEE2t2.jpg" alt="fast x"></a>
+                <div class="for-hovering"></div>
+                <h6></h6>
+                <h5>Action, Crime, Thriller</h5>
+                <h3>Fast X</h3>
+                <a href="https://www.themoviedb.org/movie/385687-fast-x/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie">
+            <a href="https://www.themoviedb.org/movie/536437-hypnotic" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/3IhGkkalwXguTlceGSl8XUJZOVI.jpg" alt="hypnotic"></a>
+                <div class="for-hovering"></div>
+                <h6></h6>
+                <h5>Crime, Thriller</h5>
+                <h3>Hypnotic</h3>
+                <a href="https://www.themoviedb.org/movie/536437-hypnotic/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie">
+                <a href="https://www.themoviedb.org/movie/458156-john-wick-chapter-3" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/ziEuG1essDuWuC5lpWUaw1uXY2O.jpg" alt="john wick 3"></a>
+                <div class="for-hovering"></div>
+                <h6></h6>
+                <h5>Action, Thriller, Crime</h5>
+                <h3>John Wick: Chapter 3</h3>
+                <a href="https://www.themoviedb.org/movie/458156-john-wick-chapter-3/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie">
+                <a href="" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/hXWBc0ioZP3cN4zCu6SN3YHXZVO.jpg" alt="john wick 2"></a>
+                <div class="for-hovering"></div>
+                <h6></h6>
+                <h5>Action, Thriller, Crime</h5>
+                <h3>John Wick: Chapter 2</h3>
+                <a href="/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie" style="display: none;">
+                <a href="https://www.themoviedb.org/movie/890771-the-black-demon" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/uiFcFIjig0YwyNmhoxkxtAAVIL2.jpg" alt="black demon"></a>
+                <div class="for-hovering"></div>
+                <h6></h6>
+                <h5>Horror, Thriller</h5>
+                <h3>The Black Demon</h3>
+                <a href="https://www.themoviedb.org/movie/890771-the-black-demon/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie" style="display: none;">
+                <a href="https://www.themoviedb.org/movie/713704-evil-dead-rise" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/5ik4ATKmNtmJU6AYD0bLm56BCVM.jpg" alt="evil dead rise"></a>
+                <div class="for-hovering"></div>
+                <h6></h6>
+                <h5>Horror, Thriller</h5>
+                <h3>Evil Dead Rise</h3>
+                <a href="https://www.themoviedb.org/movie/713704-evil-dead-rise/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie" style="display: none;">
+                <a href="https://www.themoviedb.org/movie/594767-shazam-fury-of-the-gods" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/A3ZbZsmsvNGdprRi2lKgGEeVLEH.jpg" alt="shazam fury of gods"></a>
+                <div class="for-hovering"></div>
+                <h6></h6>
+                <h5>Action, Fantasy</h5>
+                <h3>Shazam! Fury of the Gods</h3>
+                <a href="https://www.themoviedb.org/movie/594767-shazam-fury-of-the-gods/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie" style="display: none;">
+                <a href="https://www.themoviedb.org/movie/758323-the-pope-s-exorcist" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/gNPqcv1tAifbN7PRNgqpzY8sEJZ.jpg" alt="popes exorcist"></a>
+                <div class="for-hovering"></div>
+                <h6></h6>
+                <h5>Horror, Thriller</h5>
+                <h3>The Pope's Exorcist</h3>
+                <a href="https://www.themoviedb.org/movie/758323-the-pope-s-exorcist/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie" style="display: none;">
+                <a href="https://www.themoviedb.org/movie/324857-spider-man-into-the-spider-verse" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/iiZZdoQBEYBv6id8su7ImL0oCbD.jpg" alt="spiderman: into spider-verse"></a>
+                <div class="for-hovering"></div>
+                <h6></h6>
+                <h5>Action, Sci fi</h5>
+                <h3>Spider-Man: Into the Spider-Verse</h3>
+                <a href="https://www.themoviedb.org/movie/324857-spider-man-into-the-spider-verse/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie" style="display: none;">
+                <a href="https://www.themoviedb.org/movie/569094-spider-man-across-the-spider-verse" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg" alt="spiderman: across the spider-verse"></a>
+                <div class="for-hovering"></div>
+                <h6></h6>
+                <h5>Action, Sci fi</h5>
+                <h3>Spider-Man: Across the Spider-Verse</h3>
+                <a href="https://www.themoviedb.org/movie/569094-spider-man-across-the-spider-verse/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie" style="display: none;">
+                <a href="https://www.themoviedb.org/movie/414906-the-batman" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/74xTEgt7R36Fpooo50r9T25onhq.jpg" alt="the batman"></a>
+                <div class="for-hovering"></div>
+                <h6></h6>
+                <h5>Action, Crime, Thriller</h5>
+                <h3>The Batman</h3>
+                <a href="https://www.themoviedb.org/movie/414906-the-batman/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie" style="display: none;">
+                <a href="https://www.themoviedb.org/movie/447365-guardians-of-the-galaxy-vol-3" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/r2J02Z2OpNTctfOSN1Ydgii51I3.jpg" alt="guardians of galaxy 3"></a>
+                <div class="for-hovering"></div>
+                <h6></h6>
+                <h5>Sci fi, Action</h5>
+                <h3>Gaurdians of the Galaxy Vol 3</h3>
+                <a href="https://www.themoviedb.org/movie/447365-guardians-of-the-galaxy-vol-3/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie" style="display: none;">
+                <a href="https://www.themoviedb.org/movie/1073140-the-three-musketeers" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/l72yy6rPzsH8eHhEOknxlipkV95.jpg" alt="three musketeers"></a>
+                <div class="for-hovering"></div>
+                <h6></h6>
+                <h5>Action</h5>
+                <h3>The Three Musketeers</h3>
+                <a href="https://www.themoviedb.org/movie/1073140-the-three-musketeers/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie" style="display: none;">
+                <a href="https://www.themoviedb.org/tv/71026" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/lu2DNsIQgn1Jb6djHvrqJSUQXXl.jpg" alt="super wings"></a>
+                <div class="for-hovering"></div>
+                <h6>Free</h6>
+                <h5>Family</h5>
+                <h3>Super Wings!</h3>
+                <a href="https://www.themoviedb.org/tv/71026/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie" style="display: none;">
+                <a href="https://www.themoviedb.org/movie/168259-furious-7" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/ktofZ9Htrjiy0P6LEowsDaxd3Ri.jpg" alt="furious 7"></a>
+                <div class="for-hovering"></div>
+                <h6></h6>
+                <h5>Action, Thriller, Crime</h5>
+                <h3>Furious 7</h3>
+                <a href="https://www.themoviedb.org/movie/168259-furious-7/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie" style="display: none;">
+                <a href="https://www.themoviedb.org/tv/80748-fbi" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/cGLQRv3MLWGrHMhRGn1zsSa9n2i.jpg" alt="fbi"></a>
+                <div class="for-hovering"></div>
+                <h6>Free</h6>
+                <h5>Crime, Action, Drama</h5>
+                <h3>FBI</h3>
+                <a href="https://www.themoviedb.org/tv/80748-fbi/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie" style="display: none;">
+                <a href="https://www.themoviedb.org/movie/799379" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/dniWicB6fa7NvpGbguxWlNPMc5f.jpg" alt="project wolf hunting"></a>
+                <div class="for-hovering"></div>
+                <h6></h6>
+                <h5>Action, Thriler, Horror</h5>
+                <h3>Project Wolf Hunting</h3>
+                <a href="https://www.themoviedb.org/movie/799379/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie" style="display: none;">
+                <a href="https://www.themoviedb.org/tv/95171-prehistoric-planet" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/yMdFsHKp4YX2CUkAQcZswxXDuoe.jpg" alt="prehistoric planet"></a>
+                <div class="for-hovering"></div>
+                <h6>Free</h6>
+                <h5>Family, Thriler</h5>
+                <h3>Prehistoric Planet</h3>
+                <a href="https://www.themoviedb.org/tv/95171-prehistoric-planet/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie" style="display: none;">
+                <a href="https://www.themoviedb.org/movie/1013860-r-i-p-d-2-rise-of-the-damned" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/g4yJTzMtOBUTAR2Qnmj8TYIcFVq.jpg" alt="ripd "></a>
+                <div class="for-hovering"></div>
+                <h6></h6>
+                <h5>Comedy, Crime</h5>
+                <h3>RIPD 2:Rise of the Damned</h3>
+                <a href="https://www.themoviedb.org/movie/1013860-r-i-p-d-2-rise-of-the-damned/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie" style="display: none;">
+                <a href="https://www.themoviedb.org/movie/337339-the-fate-of-the-furious" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/dImWM7GJqryWJO9LHa3XQ8DD5NH.jpg" alt="f8"></a>
+                <div class="for-hovering"></div>
+                <h6></h6>
+                <h5>Crime, Thriller, Action</h5>
+                <h3>The Fate of the Furious</h3>
+                <a href="https://www.themoviedb.org/movie/337339-the-fate-of-the-furious/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie" style="display: none;">
+                <a href="https://www.themoviedb.org/tv/104877-sen-cal-kapimi" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/bE71f9A3eztjcd5JT3MmHB8MbzA.jpg" alt="love is in the air"></a>
+                <div class="for-hovering"></div>
+                <h6>Free</h6>
+                <h5>Drama, Comedy</h5>
+                <h3>Love Is In The Air</h3>
+                <a href="https://www.themoviedb.org/tv/104877-sen-cal-kapimi/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie" style="display: none;">
+                <a href="https://www.themoviedb.org/movie/385128-f9" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/bOFaAXmWWXC3Rbv4u4uM9ZSzRXP.jpg" alt="f9"></a>
+                <div class="for-hovering"></div>
+                <h6></h6>
+                <h5>Action, Crime</h5>
+                <h3>F9</h3>
+                <a href="https://www.themoviedb.org/movie/385128-f9/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie" style="display: none;">
+                <a href="https://www.themoviedb.org/tv/17937-ghost-adventures" target="_blank"><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/ubGfFkNNApmmcj50WqntAI1PWuZ.jpg" alt="ghost adventures"></a>
+                <div class="for-hovering"></div>
+                <h6>Free</h6>
+                <h5>Horror, Documentary</h5>
+                <h3>Ghost Adventures</h3>
+                <a href="https://www.themoviedb.org/tv/17937-ghost-adventures/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <!-- <div class="movie" style="display: none;">
+                <a href="" target="_blank"><img src="" alt=""></a>
+                <div class="for-hovering"></div>
+                <h6></h6>
+                <h5></h5>
+                <h3></h3>
+                <a href="/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie" style="display: none;">
+                <a href="" target="_blank"><img src="" alt=""></a>
+                <div class="for-hovering"></div>
+                <h6></h6>
+                <h5></h5>
+                <h3></h3>
+                <a href="/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div>
+            <div class="movie" style="display: none;">
+                <a href="" target="_blank"><img src="" alt=""></a>
+                <div class="for-hovering"></div>
+                <h6></h6>
+                <h5></h5>
+                <h3></h3>
+                <a href="/watch" target="_blank"><h4>Watch Now</h4></a>
+            </div> -->
+        </div>
+        <div class="loadmore" id="loadmore">
+            <button onclick="load_more_movies()">Load More</button>
+        </div>
+        <footer>
+            <div class="container3" id="footer">
+                <div class="leftside">
+                    <img src="./logo2.jpg" alt="logo">
+                    <h2>MoviePhilic</h2>
+                    <div class="clear" style="clear: both;"></div>
+                </div>
+                <h3>&copy; 2023, All Rights Reserved</h3>
+            </div>
+        </footer>
+        <div class="to_top">
+            <a href="#top"><i class="fa-solid fa-arrow-up"></i></a>
+        </div>
+    </main>
+
+    <script src="./search-filter.js"></script>
+    <script src="./genre-filter.js"></script>
+
+</body>
+</html>
